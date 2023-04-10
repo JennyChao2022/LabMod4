@@ -1,0 +1,61 @@
+<html>
+  <head>
+    <title>Moment DateTime Format</title>
+
+    <script
+      src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.7.0/moment.min.js"
+      type="text/javascript"
+    ></script>
+  </head>
+  <body>
+    <h2>Moment Date</h2>
+  
+    <div id="displayMoment"></div>
+
+    <h2>JavaScript Date</h2>
+  
+    <div id="displayJsDate"></div>
+
+    <h2>My Birth Day</h2>
+    <div id="displayBirthday"></div>
+
+    <h2>Difference in BD compared to seconds</h2>
+    <div id="displayDiff"></div>
+
+    <h2>Difference in BD compared to days</h2>
+    <div id="displayDiffDays"></div>
+
+    <script type="text/javascript">
+      (function () {
+        // instantiate a moment object
+        var NowMoment = moment();
+        // instantiate a JavaScript Date object
+        var NowDate = new Date();
+        // display value of moment object in #displayMoment div
+        var eDisplayMoment = document.getElementById("displayMoment");
+        eDisplayMoment.innerHTML = NowMoment;
+        // display value of Date object in #displayJsDate div
+        var eDisplayDate = document.getElementById("displayJsDate");
+        eDisplayDate.innerHTML = NowDate;
+
+        //If your birthday is 14th March 1996, the date arguments will be (1996, 3, 14)
+        //If your birthday is 2nd May 1996, the date arguments will be (1996, 4, 2)
+        let birthday = new Date( 1996, 8, 4); //year (1997), month index ( October = 9 ), day (2)
+        let diff = NowDate.getTime() - birthday.getTime() // returns time difference in milliseconds.
+
+        let bd = moment ([1996, 3, 9]);
+        let diffinDays = NowMoment.diff(bd, 'days')
+
+        var eDisplayBD = document.getElementById("displayBirthday");
+        eDisplayBD.innerHTML = birthday;
+
+        var eDisplayDate = document.getElementById("displayDiff");
+        eDisplayDate.innerHTML = Math.floor(diff / 1000); //Diff is in milliseconds. Divide by 1000 to get seconds, and floor the number to remove any decimal points
+
+        var eDisplayDatediff = document.getElementById("displayDiffDays");
+        eDisplayDatediff.innerHTML = diffinDays;
+        // https://momentjs.com/docs/#/displaying/difference/
+    })();
+    </script>
+  </body>
+</html>

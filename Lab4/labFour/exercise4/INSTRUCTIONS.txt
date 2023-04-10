@@ -1,0 +1,21 @@
+For exercise 4, you will be creating a calculator. The application is quite simple, but it requires that you understand the basic flow.
+
+The slide for exercise 4 is slide 38 in the Module 4 slides
+
+Instructions:
+
+1. List your requirements
+
+For this calculator, you will have 4 requirements:
+    a: Get data
+    b: Choose an operator
+    c: Get the result
+    d: Reset the screen
+
+2. Sketch the application on paper, so that you are sure bout the correct functioning - Put picture of paper sketch into the exercise4 folder
+
+3. Optional -- You may use a flow diagram to help. - If you do this, put a picture of the flow diagram in the exercise4 folder
+
+4. Use a tool of your choice, like Figma, to design the application - Put screenshots of designs in the exercise4 folder
+
+5. Use the prototype ability to test it

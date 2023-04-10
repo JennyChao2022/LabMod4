@@ -1,0 +1,140 @@
+<!--
+    This is exercise 6 for lab 4.
+    The slides for this lab are slides 57 & 58 in the Module 4 slides.
+
+    In this exercise you will be managing data.
+
+    Your goal is to use the following array to populate a webpage with cards of news
+
+    let news=[
+        { id: 1, title: 'News1', content:"bla"},
+        { id: 2, title: 'News2', content:"ble"},
+        { id: 3, title: 'News3', content:"blu"}
+    ];
+
+    When the page loads, show cards of news, and get the news data from the news array.
+
+    Use an interval function to read the array every 5 seconds. Every time
+    the array is read, remove all of the news cards that are showing on
+    the screen, and rerender them using the data in the news array.
+
+    That way what is on screen will show what is in the news array every 5 seconds.
+
+    Once you have done that, to update the array, create a form somewhere on your page.
+    The form will have 2 text inputs and a submit button.
+    One text input would be for the title of the news, and the other would be
+    for the news content.
+
+    There is a trick here, if you use a form and submit, it will trigger a page reload.
+    There are two ways of solving this:
+
+    1. You can research the prevent default behaviour, which stops the form from doing
+    a normal post.
+
+    2. You can simply recreate the form without using an actual html form.
+    Use textareas and normal buttons instead
+
+    Choose the way that you are most comfortable with.
+-->
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+        background-color: #e3f2fd;
+      }
+      .card {
+        padding: 10px;
+      }
+      .card-title {
+        font-weight: 600;
+        font-size: 3em;
+        padding: 0 0 10px 0;
+      }
+      .card-description {
+        font-weight: 400;
+        font-size: 2em;
+      }
+    </style>
+  </head>
+  <body>
+    <template id="card-template">
+      <div class="card">
+        <div class="card-body">
+          <div class="card-title"></div>
+          <div class="card-text"></div>
+          <div class="card-target"></div>
+        </div>
+      </div>
+    </template>
+
+    <div id="card-list"></div>
+    <h2>Update your news</h2>
+
+    <form id="form" action="#">
+      <label for="title">Title:</label><br />
+      <input type="text" id="title" name="title" value="News" /><br />
+      <label for="content">Content:</label><br />
+      <input type="text" id="content" name="content" value="blo" /><br /><br />
+      <input type="submit" value="Submit" id="submit" />
+    </form>
+  </body>
+</html>
+
+<script>
+  let news = [
+    { id: 1, title: "News1", content: "bla" },
+    { id: 2, title: "News2", content: "ble" },
+    { id: 3, title: "News3", content: "blu" },
+  ];
+
+  function addCard(c) {
+    c.forEach((item) => {
+      //this is where we clone the whole template from id card-template and store it in const template
+      const template = document
+        .getElementById("card-template")
+        .content.cloneNode(true);
+      //this is where you select the class card-title and update its content, so does card-text
+      template.querySelector(".card-title").innerText = item.id;
+      template.querySelector(".card-text").innerText = item.title;
+      template.querySelector(".card-target").innerText = item.content;
+      //finally we document the whole template and append it to id card-list
+      document.querySelector("#card-list").appendChild(template);
+    });
+  }
+  // this sentence below is just us being careful
+  // as our application is built to run on new browser
+  // so if customer run it on old browser we can throw in a message box in else statement or something
+  if ("content" in document.createElement("template")) {
+    function clearNews() {
+      document.querySelector("#card-list").innerHTML = " ";
+    }
+    // setInterval allows us to run a function repeatedly, 
+    // starting after the interval of time, then repeating continuously at that interval.
+    setInterval(() => {
+      clearNews();
+      addCard(news);
+    }, 5000);
+  }
+
+document.getElementById("form").addEventListener("submit", function (event) {
+    event.preventDefault();
+    debugger
+    const inputField1 = document.getElementById("title");
+    const inputTitle = inputField1.value;
+    const inputField2 = document.getElementById("content");
+    const inputContent = inputField2.value;
+    function addNews(title, content) {
+      const item = {
+        id: news.length + 1,
+        title: title,
+        content: content,
+      };
+      news.push(item);
+      console.log(news);
+    }
+    addNews(inputTitle, inputContent);
+  });
+</script>
+

@@ -1,0 +1,87 @@
+<!--
+    This is exercise 3 for lab 4.
+    The labs for this exercise can be found in slides 33 - 35 in the Module 4 slides
+
+    Your goal is to use and modify your code from exercise2.html to show Van Gogh's portfolio.
+
+    Use the following data to do that:
+
+    const artist = {
+        name:"Van Gogh",
+        portfolio:[
+            {title:"portrait", url:"https://collectionapi.metmuseum.org/api/collection/v1/iiif/436532/1671316/main-image"},
+            {title:"sky", url:"https://mymodernmet.com/wp/wp-content/uploads/2020/11/White-house-night-van-goh-worldwide-2.jpg"},
+        ]
+    }
+
+    Display the artist's name, and show the paintings they have made in cards
+
+    In your cards, show the painting title, and the painting image
+
+    Use title as the card title, and url as the url for the image.
+-->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+        background-color: #e3f2fd;
+      }
+      .card {
+        padding: 10px;
+      }
+      .card-title {
+        font-weight: 600;
+        font-size: 3em;
+        padding: 0 0 10px 0;
+      }
+      .card-description {
+        font-weight: 400;
+        font-size: 2em;
+      }
+    </style>
+  </head>
+  <body>
+    <template id="card-template">
+      <div class="card">
+        <div class="card-body">
+          <div class="card-title"></div>
+          <img class="card-text"></img>
+        </div>
+      </div>
+    </template>
+
+    <div id="card-list"></div>
+  </body>
+</html>
+
+<script>
+const artist = {
+    name:"Van Gogh",
+    portfolio:[
+        {title:"portrait", url:"https://collectionapi.metmuseum.org/api/collection/v1/iiif/436532/1671316/main-image"},
+        {title:"sky", url:"https://mymodernmet.com/wp/wp-content/uploads/2020/11/White-house-night-van-goh-worldwide-2.jpg"},
+    ]
+}
+  function addCard(title, url) {
+      //this is where we clone the whole template from id card-template and store it in const template
+      const template = document
+        .getElementById("card-template")
+        .content.cloneNode(true);
+      //this is where you select the class card-title and update its content, so does card-text
+      template.querySelector(".card-title").innerText = title;
+      template.querySelector(".card-text").setAttribute("src", url);
+      //finally we document the whole template and append it to id card-list
+      document.querySelector("#card-list").appendChild(template);
+  }
+  // this sentence below is just us being careful
+  // as our application is built to run on new browser
+  // so if customer run it on old browser we can throw in a message box in else statement or something
+  if ("content" in document.createElement("template")) {
+    artist.portfolio.forEach( (el) => {addCard(el.title, el.url)});
+  }
+//above is where you pass the content of this object as argument and pass it to the template you created
+
+</script>

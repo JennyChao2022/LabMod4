@@ -1,0 +1,15 @@
+This is exercise15 for lab 4.
+The slide for this exercise is 92 in the Module 4 slides.
+
+Your goal is to create a social posts page.
+Utilise what you have learnt here to create a rich application.
+
+Start with what you want to show, for example, a hobby of yours.
+Create requirements, do some research, perhaps use Pinterest to get some ideas.
+Prepare your lo-fi / sketches and put pictures of those in the exercise 15 folder
+Prepare your application on Figma and put your design screenshots in the exercise 15 folder
+Get coding and remember to use responsive design.
+
+Add things such as data, animations, and charts.
+
+Discuss the application with your lead trainer in order to get feedback

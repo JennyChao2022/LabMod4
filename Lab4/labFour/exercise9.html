@@ -1,0 +1,97 @@
+<!--
+    This is exercise 9 for lab 4.
+    The labs for this exercise can be found in slide 74 in the Module 4 slides
+
+    In this exercise you will be using CSS Animations
+
+    Instructions:
+        1. Make a square with a red background
+        2. Make the square go down
+        3. Make the square return to it's original position
+        4. While the square is going up and down, change it's background color to blue
+-->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>CSS Animation</title>
+    <style type="text/css">
+        /* /* p {
+            animation-duration: 3s;
+            /* Next, we will create an Animation by using keyframes. */
+            /* animation-name: slidein;
+            animation-iteration-count: infinite; */
+            /* We can also change animation-iteration-count to a number. 
+            If we change it to ‘3’, it will repeat 3 times. 
+        } */
+        /* keyframes use a percentage to specify the point at which the animation occurs.  
+        0% indicates the first moment of the animation and 100% the final moment of the animation.*/
+        /* @keyframes slidein {
+            from {
+                margin-left: 100%;
+                width: 100%;
+            } */
+            /* to {
+                margin-left: 0%;
+                width: 100%;
+            } */
+            /* We add a new keyframe. When the animation is running at 50% we set the font size and change the width; 
+            we also set the distance from the left to 40% to make the text appear to be in the middle.*/
+            /* 50% {
+                font-size: 300%;
+                margin-left: 40%;
+                width: 150%; /* why 150? 
+            }*/
+            /* to {
+                margin-left: 0%;
+                width: 100%;
+            } 
+        } */
+        .square {
+            animation-duration: 3s;
+            animation-name: godown;
+            animation-iteration-count: infinite;
+        }
+        @keyframes godown {
+            from {
+                margin-top: 0%;
+                width: 100%;
+                background-color: red;
+                width: 10rem;
+                height: 10rem;  
+                margin-left: 50%;  
+            }
+            to {
+                margin-top: 30%;
+                background-color: blue;
+                width: 10rem;
+                height: 10rem; 
+                margin-left: 50%;  
+            }
+            50% {
+                margin-top: 30%;
+                background-color: blue;
+                width: 10rem;
+                height: 10rem;  
+                margin-left: 50%;  
+            }
+            to {
+                margin-top: 0%;
+                background-color: red;
+                width: 10rem;
+                height: 10rem;    
+                margin-left: 50%;  
+            }
+            /* We add a new keyframe. When the animation is running at 50% we set the font size and change the width; 
+            we also set the distance from the left to 40% to make the text appear to be in the middle.*/
+            
+        }
+
+    </style>
+  </head>
+  <body>
+    <p>Hello world</p>
+    <div class="square"></div>
+  </body>
+</html>

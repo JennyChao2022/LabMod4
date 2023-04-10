@@ -1,0 +1,62 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculator Example</title>
+    <link rel="stylesheet" href="calc.css" />
+  </head>
+  <body>
+    <div>
+      <h1>Calculator</h1>
+    </div>
+    
+    <div class="container">
+      <div class="display">
+        <input type='text' id='result' disabled>
+        <input type='button' value = 'C' onclick="clearScreen()" class="clear"/>
+      <!-- we can also use readonly attribute to make the input field read-only. 
+          The difference between disabled and readonly is that the disabled element is not submitted along with the form data, 
+          while the readonly element is submitted along with the form data. -->
+      </div> 
+      <br />
+      <div class="keys">
+        <input type="button" value="7" class="button" onClick="display('7')"></input>
+        <input type="button" value="8" class="button " onClick="display('8')"></input>
+        <input type="button" value="9" class="button" onClick="display('9')"></input>
+        <input type="button" value="/" class="operator" onClick="display('/')"></input>
+        <input type="button" value="4" class="button" onClick="display('4')"></input>
+        <input type="button" value="5" class="button" onClick="display('5')"></input>
+        <input type="button" value="6" class="button" onClick="display('6')"></input>
+        <input type="button" value="*" class="operator" onClick="display('*')"></input>
+        <input type="button" value="1" class="button" onClick="display('1')"></input>
+        <input type="button" value="2" class="button" onClick="display('2')"></input>
+        <input type="button" value="3" class="button" onClick="display('3')"></input>
+        <input type="button" value="-" class="operator" onClick="display('-')"></input>
+        <input type="button" value="0" class="button" onClick="display('0')"></input>
+        <input type="button" value="." class="button" onClick="display('.')"></input>
+        <input type="button" value="=" class="button equal-sign" onClick="solve()"></input>
+        <input type="button" value="+" class="operator" onClick="display('+')"></input>
+      </div>
+  </body>
+  <!-- In this case, below tags are serving as routers and controllers-->
+  <script>
+    // sorry guys this is just incompetent me copy the mechanism off the net.
+    // view
+    function display(val){
+      document.getElementById('result').value += val
+      return val
+    }
+    function clearScreen(){
+      document.getElementById('result').value = ''
+    }
+    // model
+    function solve(){
+      let x = document.getElementById('result').value
+      let y = eval(x);
+      // it is not recommened to use eval() but let's not overcomplicate our little calculator for now
+      document.getElementById('result').value = y
+      return y
+    }
+  </script>
+</html>

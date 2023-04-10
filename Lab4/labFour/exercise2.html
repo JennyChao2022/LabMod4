@@ -1,0 +1,82 @@
+<!--
+    This is exercise 2 for lab 4.
+    The labs for this exercise can be found in slides 33 - 35 in the Module 4 slides
+
+    Copy the code from exercise1.html into this file as well. Paste it under the "Put code below this line" comment.
+
+    Add the below line of code to the top of the <script> tag
+
+    const data = [{name: 'bob', age: 23}, {name: 'alice', age: 39}]
+
+
+    Your goal is to modify your code so your cards are automatically generated from
+    the data in the data array - meaning if there are 5 items in the array, 5 cards should be generated
+
+    The 'name' should be used as the card title, and the 'age' should be used for the card text.
+-->
+
+
+<!-- Put your exercise1.html code below this line (excluding the comment at the top) -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+        background-color: #e3f2fd;
+      }
+      .card {
+        padding: 10px;
+      }
+      .card-title {
+        font-weight: 600;
+        font-size: 3em;
+        padding: 0 0 10px 0;
+      }
+      .card-description {
+        font-weight: 400;
+        font-size: 2em;
+      }
+    </style>
+  </head>
+  <body>
+    <template id="card-template">
+      <div class="card">
+        <div class="card-body">
+          <div class="card-title"></div>
+          <div class="card-text"></div>
+        </div>
+      </div>
+    </template>
+
+    <div id="card-list"></div>
+  </body>
+</html>
+
+<script>
+const data = [
+    { name: "bob", age: 23 },{ name: "alice", age: 39 },
+  ];
+  function addCard(c) {
+    c.forEach((person) => {
+      //this is where we clone the whole template from id card-template and store it in const template
+      const template = document
+        .getElementById("card-template")
+        .content.cloneNode(true);
+      //this is where you select the class card-title and update its content, so does card-text
+      template.querySelector(".card-title").innerText = person.name;
+      template.querySelector(".card-text").innerText = person.age;
+      //finally we document the whole template and append it to id card-list
+      document.querySelector("#card-list").appendChild(template);
+    });
+  }
+  // this sentence below is just us being careful
+  // as our application is built to run on new browser
+  // so if customer run it on old browser we can throw in a message box in else statement or something
+  if ("content" in document.createElement("template")) {
+    addCard(data);
+  }
+  //this is where you pass the content of this object as argument and pass it to the template you created
+</script>
+
+<!-- Put your exercise1.html code below this line (excluding the comment at the top) -->
